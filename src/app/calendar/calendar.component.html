@@ -1,0 +1,31 @@
+<div class="calendar">
+    <div class="header">
+      <button (click)="prevMonth()">Prev</button>
+      <h3>{{ currentMonthName }} {{ currentYear }}</h3>
+      <button (click)="nextMonth()">Next</button>
+    </div>
+    <div class="calendar-grid">
+      <div class="week-days">
+        <div class="day">Sun</div>
+        <div class="day">Mon</div>
+        <div class="day">Tue</div>
+        <div class="day">Wed</div>
+        <div class="day">Thu</div>
+        <div class="day">Fri</div>
+        <div class="day">Sat</div>
+      </div>
+      <div class="weeks">
+        <div class="week" *ngFor="let week of weeks">
+          <div
+            class="day"
+            *ngFor="let day of week"
+            [ngClass]="{ 'null-day': day === null, 'current-day': isCurrentDay(day) }"
+          >
+            <span class="day-number">{{ day }}</span>
+            <!-- Render appointments here if applicable -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

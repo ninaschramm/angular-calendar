@@ -1,0 +1,55 @@
+.calendar {
+    width: 300px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+  }
+  
+  .week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+  }
+  
+  .day {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .day:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .null-day {
+    visibility: hidden;
+  }
+  
+  .current-day {
+    background-color: #ddd;
+  }
+  
+  .day-number {
+    font-weight: bold;
+  }
+  
+  .appointments {
+    margin-top: 10px;
+  }
+  
+  .appointment {
+    margin-bottom: 5px;
+  }
+  
