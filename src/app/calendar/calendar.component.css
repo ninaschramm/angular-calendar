@@ -1,55 +1,147 @@
 .calendar {
-    width: 300px;
-    margin: 0 auto;
     font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    padding: 30px;
+    border-radius: 5px;
+    max-width: 600px;
+    margin: 0 auto;
   }
   
   .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .header h3 {
+    font-size: 28px;
+    color: #202124;
+    margin: 0;
+  }
+  
+  .weekdays {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  .weekday {
+    font-size: 18px;
+    font-weight: bold;
+    color: #5f6368;
   }
   
   .calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
+    display: flex;
+    flex-direction: column;
   }
   
   .week {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
   }
   
   .day {
+    flex: 1;
+    text-align: center;
     padding: 10px;
     border: 1px solid #ccc;
-    text-align: center;
-    cursor: pointer;
-  }
-  
-  .day:hover {
-    background-color: #f0f0f0;
-  }
-  
-  .null-day {
-    visibility: hidden;
-  }
-  
-  .current-day {
-    background-color: #ddd;
+    border-radius: 5px;
   }
   
   .day-number {
+    font-size: 24px;
+    color: #202124;
+    cursor: pointer;
+  }
+  
+  .null-day {
+    color: #ccc;
+    cursor: default;
+  }
+  
+  .current-day {
+    background-color: #4285f4;
+    color: white;
     font-weight: bold;
+    border-radius: 50%;
   }
   
-  .appointments {
-    margin-top: 10px;
+  .has-appointments {
+    font-weight: bold;
+    color: #4285f4;
   }
   
-  .appointment {
-    margin-bottom: 5px;
+  .appointment-form {
+    margin-top: 30px;
+  }
+  
+  .appointment-form h2 {
+    font-size: 24px;
+    color: #202124;
+    margin: 0;
+    margin-bottom: 15px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    font-size: 18px;
+    color: #5f6368;
+  }
+  
+  input[type="text"],
+  input[type="date"],
+  input[type="time"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  button[type="submit"],
+  button {
+    background-color: #4285f4;
+    color: white;
+    font-size: 18px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover,
+  button:hover {
+    background-color: #3367d6;
+  }
+  
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  li {
+    margin-bottom: 15px;
+  }
+  
+  li button {
+    margin-left: 15px;
+    background-color: #db4437;
+    color: white;
+    font-size: 14px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  li button:hover {
+    background-color: #c9302c;
   }
   

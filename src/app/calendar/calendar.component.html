@@ -4,16 +4,10 @@
       <h3>{{ currentMonthName }} {{ currentYear }}</h3>
       <button (click)="nextMonth()">Next</button>
     </div>
-    <div class="calendar-grid">
-      <div class="week-days">
-        <div class="day">Sun</div>
-        <div class="day">Mon</div>
-        <div class="day">Tue</div>
-        <div class="day">Wed</div>
-        <div class="day">Thu</div>
-        <div class="day">Fri</div>
-        <div class="day">Sat</div>
+    <div class="weekdays">
+        <div *ngFor="let dayName of weekdays" class="weekday">{{ dayName }}</div>
       </div>
+    <div class="calendar-grid">        
       <div class="weeks">
         <div class="week" *ngFor="let week of weeks">
           <div
@@ -21,11 +15,50 @@
             *ngFor="let day of week"
             [ngClass]="{ 'null-day': day === null, 'current-day': isCurrentDay(day) }"
           >
-            <span class="day-number">{{ day }}</span>
+            <div class="day-number"
+                [ngClass]="{
+                'null-day': day === null,
+                'current-day': isCurrentDay(day),
+                'has-appointments': hasAppointmentsForDay(day)
+                }"
+                (click)="selectDay(day)"
+            >
+            {{ day }}
+            </div>
             <!-- Render appointments here if applicable -->
           </div>
         </div>
       </div>
     </div>
+    <div class="appointment-form">
+        <h2>Add Appointment</h2>
+        <form (ngSubmit)="addAppointment()">
+          <div class="form-group">
+            <label>Title:</label>
+            <input type="text" [(ngModel)]="appointmentTitle" name="title" required>
+          </div>
+          <div class="form-group">
+            <label>Date:</label>
+            <input type="date" [ngModel]="appointmentDate" (ngModelChange)="appointmentDate = $event" name="thisdate" required> 
+          </div>
+          <div class="form-group">
+            <label>Time:</label>
+            <input type="time" [(ngModel)]="appointmentTime" name="time" required>
+          </div>
+          <button type="submit">Add</button>
+        </form>
+      </div>
+
+      <div *ngIf="selectedDate">
+        <h3>Appointments for {{ selectedDate | date }}</h3>
+        <ul>
+            <li *ngFor="let appointment of getAppointmentsForDate(selectedDate)">
+                {{ appointment.title }} - {{ appointment.time }}
+                <button (click)="deleteAppointment(appointment)">Delete</button>
+                <button (click)="changeAppointmentDate(appointment)">Move</button>
+            </li>
+        </ul>
+      </div>
+      
   </div>
   
